@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Login page</title>
+	<link rel="stylesheet" type="text/css" media="all" href="css/mystyle.css" />
+	<script src="utils.js" charset="utf-8" defer></script>
+	<script src="loginManagement.js" charset="utf-8" defer></script>
+
+</head>
+<body id="index-body">
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form class="login-form" action="#">
+				<h1>Create Account</h1>
+				<input type="text" id="email-signup" name="email" placeholder="Email" required/>
+				<input type="text" name="username" placeholder="Username" required/>
+				<input type="password" id="password-signup" name="pwd" placeholder="Password" required/>
+				<input type="password" placeholder="Confirm Password" name="confirm_pwd" id="confirm_password" required/>
+				<input id="signup-button" type="button" value="Sign Up">
+				<p class="margin-paragraph" id="errormessage-signup"></p>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form class="login-form" action="#">
+			<h1>Sign in</h1>
+			<input type="text" name="username" placeholder="Username" required/>
+			<input type="password" id="password-login" name="pwd" placeholder="Password" required/>
+			<input id="login-button" type="button" value="Sign In">
+			<p class="margin-paragraph" id="errormessage-login"></p>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p class="margin-paragraph">To keep connected with us please login with your personal info</p>
+				<button class="ghost" id="signIn">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, Friend!</h1>
+				<p class="margin-paragraph">Enter your personal details and start journey with us</p>
+				<button class="ghost" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer>
+	<p class="margin-paragraph">
+		Created by Andrea Lampis
+	</p>
+</footer>
+
+</body>
+</html>

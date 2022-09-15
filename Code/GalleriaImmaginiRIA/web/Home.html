@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Home</title>
+<link rel="stylesheet" type="text/css" media="all" href="css/mystyle.css" />
+<script src="utils.js" charset="utf-8" defer></script>
+<script src="albumManagement.js" charset="utf-8" defer></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</head>
+<body>
+	<div align="right">
+		<a href="Logout">Logout</a>
+	</div>
+	<h1>Welcome!!</h1>
+	<p>Nice to see you again <span id="id_username"></span></p>
+	<div id="id_alert" class="alert-message"></div>
+
+	<table>
+		<tr>
+			<td>
+				<table id="id_listcontainer" class="rwd-table">
+					<thead>
+					<tr>
+						<th>Title</th>
+						<th>Date</th>
+						<th>Link</th>
+					</tr>
+					</thead>
+					<tbody class="row_drag" id="id_listcontainerbody">
+					</tbody>
+				</table>
+			</td>
+			<td>
+				<table id="id_imagescontainer">
+					<tbody id="id_imagescontainerbody">
+					</tbody>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<input id="save-albums-order" type="button" value="Save Order">
+			</td>
+		</tr>
+	</table>
+
+	<span id="id_imagedetailscontainer">
+		<div class="details-container">
+			<div class="box">
+				<div class="box-row">
+					<div class="box-cell box1 imagedetails">
+						<p class="title"></p>
+						<p class="date"></p>
+						<p class="description"></p>
+						<img class="full-screen-image">
+					</div>
+
+					<div class="box-cell box2 commentsdetails">
+						<form id="comment-form" action="#" accept-charset="ISO-8859-1">
+							<fieldset>
+								<p>Comment: <input type="text" name="comment" required/></p>
+								<input type="hidden" name="imageid">
+								<input type="button" name="Send" value="Send">
+							</fieldset>
+						</form>
+						<table class="comments-table">
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</span>
+</body>
+
+</html>

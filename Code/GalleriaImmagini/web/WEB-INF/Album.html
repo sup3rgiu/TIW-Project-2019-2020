@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Album</title>
+<link rel="stylesheet" type="text/css" media="all"
+	href="../css/mystyle.css" th:href="@{/css/mystyle.css}" />
+</head>
+<body>
+<div align="right">
+	<a th:href="@{/Logout}">Logout</a>
+</div>
+<div align="left">
+	<a th:href="@{/Home}">Home</a>
+</div>
+<h1>Album Gallery</h1>
+
+	<table>
+			<tr>
+				<th:block th:if="${previousGroupId != null}">
+					<td rowspan="2"><a th:href="@{/GetAlbum(groupid=${previousGroupId})}"><button>Previous</button></a></td>
+				</th:block>
+				<th:block th:if="${#lists.isEmpty(images)}">
+					<td>No images yet!</td>
+				</th:block>
+				<th:block th:unless="${#lists.isEmpty(images)}">
+					<th:block th:each="i : ${images}">
+						<td th:text="${i.name}"></td>
+					</th:block>
+					<th:block th:if="${nextGroupId != null}">
+						<td rowspan="2"><a th:href="@{/GetAlbum(groupid=${nextGroupId})}"><button>Next</button></a></td>
+					</th:block>
+				</th:block>
+			</tr>
+			<tr>
+				<th:block th:unless="${#lists.isEmpty(images)}">
+					<th:block th:each="i : ${images}">
+						<td><a th:href="@{/GetAlbum(imageid=${i.id}, details=true)}"><img th:src="@{${i.filepath}}" alt="" border=3 height=100 width=100></img></a></td>
+					</th:block>
+				</th:block>
+			</tr>
+	</table>
+<th:block th:if="${showImageDetails == true}">
+	<div class="details-container">
+		<div class="box">
+			<div class="box-row">
+				<div class="box-cell box1">
+					<p th:text="'Title: ' + ${detailedImage.name}"></p>
+					<p th:text="'Date: ' + ${detailedImage.date}"></p>
+					<p th:text="'Description: ' + ${detailedImage.description}"></p>
+					<img th:src="@{${detailedImage.filepath}}" th:alt="${detailedImage.name}">
+				</div>
+
+				<div class="box-cell box2">
+					<form id="comment-form" th:action="@{/AddComment}" method="POST">
+						<fieldset>
+							<p>Comment: <input type="text" name="comment" required/></p>
+							<input type="hidden" name="imageid" th:value="${detailedImage.id}">
+							<input type="submit" name="Send">
+						</fieldset>
+					</form>
+					<table class="comments-table">
+						<th:block th:each="c : ${comments}">
+						<tr>
+							<th th:text="${'Comment by ' + c.getUsername()}">
+							<td th:text="${c.getText()}">
+						</tr>
+						</th:block>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</th:block>
+
+</body>
+</html>
